@@ -1,0 +1,36 @@
+    /* CSS for the first div */
+    #id1 {
+        border: 1px solid black;
+        padding: 8px;
+    }
+
+    /* CSS for the image in the second div */
+    #id2 img {
+        float: left;
+        margin-right: 8px;
+        margin-bottom: 8px;
+    }
+
+    /* CSS for the third div */
+    #id3 {
+        background-color: dimgrey;
+        padding: 10px;
+        margin: 10px 0;
+    }
+    
+    .custom-class  {
+        position: fixed; /* or position: absolute; */
+        top: 105px;
+        left: 105px;
+        width: 485px;
+        height: 485px;
+        z-index: 1; /* Ensure it's displayed in front of other divs */
+        /* Additional styles as needed */
+        cursor: pointer; /* Change cursor to indicate interaction */
+        
+    }
+    
+    /* CSS to hide the div on click */
+    .custom-class:active {
+        display: none;
+    }
