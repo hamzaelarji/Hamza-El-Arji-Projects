@@ -1,0 +1,29 @@
+=== Interface utilisateur graphique
+
+[%autowidth]
+[cols="1a,1", grid=none, frame=none]
+|===
+
+|image::../images/dashboard/3.png['Dashboard', 100]
+^.^|Page d'accueil de l'application qui affiches la consommation de l'utilisateur
+
+|image::../images/dashboard/4.png['Dashboard',100]
+^.^|Evolution de la consommation sur une période donnée avec la consommation des autres utilisateurs
+
+
+|image::../images/dashboard/5.png['Dashboard',100]
+^.^|Section permettant de scanner un article
+
+
+|image::../images/dashboard/6.png['Dashboard',100]
+^.^|Proposition d'actions/alternatives qui permettent de diminuer son empreinte carbone
+
+
+|image::../images/dashboard/7.png['Dashboard',100]
+^.^|Questionnaire à remplir par l'utilisateur
+
+
+|image::../images/dashboard/12.png['Dashboard',100]
+^.^|Interface du site web
+
+|===

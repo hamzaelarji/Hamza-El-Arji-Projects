@@ -1,0 +1,19 @@
+=== Scénarios d’usage
+
+Dans un contexte environnemental critique, Quentin, étudiant, est de plus en plus inquiet. Un jour, alors qu’il s’investit pleinement dans l’association de son école, il entend parler lors d’une discussion de Carebon.
+
+Cette application suit un principe simple : à partir de différentes données collectées, comme la position GPS, les achats effectués sur internet (ou au supermarché), la consommation ménagère, l’application va lui donner son bilan carbone, le comparer à des valeurs tabulées ainsi qu'à ceux de nos utilisateurs (s’ils souhaitent les partager) et enfin lui proposer des solutions afin de réduire son impact écologique.
+
+Elle a pour vocation à la fois de proposer des solutions personnalisées mais aussi plus simplement de mieux connaître les impacts de son mode de vie sur la planète. 
+
+Quentin décide alors de télécharger l’application et de l’essayer tout de suite. 
+
+Il ouvre son application sur son téléphone. L’application s’ouvre sur une petite présentation de Carebon, puis un court questionnaire pour créer le profil de l’utilisateur. Ensuite, des demandes d’autorisations sont envoyées à l’utilisateur afin d’avoir accès aux données nécessaires au bon fonctionnement de Carebon.
+
+Dans l’attente d’avoir des données, l’application propose des informations afin d’en connaître mieux sur la situation actuelle de notre planète. Ensuite, il s’agirait de synchroniser son ordinateur et l’application afin d’avoir accès aux achats effectués. Pour cela, il faut ajouter une extension sur Google Chrome.
+
+Dans la semaine, alors que Quentin travaille sur son ordinateur, il décide de réutiliser l’application pour en savoir un peu plus. Il découvre un histogramme détaillé, et il est agréablement surpris. Son bilan carbone est en dessous de la moyenne, et cette comparaison est possible parce que les valeurs sont comparées entre utilisateurs et comparées à des valeurs un peu plus générales.
+
+Tout de même, l’application lui propose des solutions afin de faire encore mieux. Par exemple, si Quentin utilise beaucoup la voiture, on lui proposera de prendre les transports en commun. Aussi, si on remarque que l’utilisateur achète beaucoup d’habits en ligne, on le redirigera vers des sites plus éco respectueux, et ainsi de suite… 
+
+Un mois plus tard, Quentin conquis, décide de créer un compte pour son association, et l’utilise à chaque fois qu’il fait des achats pour celle-ci. Dès lors, ces derniers pourront trouver des manières plus écologiques de mener à bien leurs activités, et pourront en un clic rendre un bilan carbone à l'autorité qui le leur demande.

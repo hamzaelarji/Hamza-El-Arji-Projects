@@ -1,0 +1,17 @@
+=== Planning Prévisionnel PACT
+
+==== Planning Groupe
+
+[cols=",^,,",options="header",]
+|====
+|Tâche | Responsable(s) | Quand Prévisionnel | Quand effectif
+|Intégration Initale | Jean-Loup |20/03/23| 20/03/23
+|Intégration PAN3 finalisée | Elie |24/03/23| 28/03/23
+|Préparation / répétition PAN3 | Hamza |28/03/23| 28/03/23 - 03/04/23
+|Démo PAN4 finalisée | Ulysse |23/05/23| 23/05/23
+|Préparation Poster PAN4 | Mouloud |18/05/23| 17/05/23
+|Présentation "Pitch" PAN4 | Jean-Loup |30/05/23| 23/05/23
+|PAN4 Vidéo | Elie | 26/05/23 | Pas de vidéo
+|====
+
+

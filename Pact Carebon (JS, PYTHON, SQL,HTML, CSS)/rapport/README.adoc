@@ -1,0 +1,99 @@
+= Rapport d’avancement: groupe 6.1
+PACT groupe 6.1
+ifdef::env-gitlab,env-browser[:outfilesuffix: .adoc]
+:doctype: book
+:stem: latexmath
+:source-highlighter: coderay
+:toc-title: Table des matières
+:toc: macro
+:sectnums:
+:imagesdir: images
+
+
+// Partie non numérotée
+:sectnums!:
+== « CareBon »
+
+=== Membres du groupe
+
+* Arette-Hourquet Jean-Loup
+* Bosle Elie
+* El Arji Hamza
+* Ristorcelli Ulysse
+* Tighilt Mouloud
+
+=== Tuteur
+
+* Dang-Kien Pham
+
+=== Encadrant génie logiciel
+
+* Marc Hulcelle
+
+<<<
+
+== Résumé du sujet choisi en français (PAN1)
+
+CAREBON est une application mobile mesurant l’impact carbone de son utilisateur. Celle-ci suit ses trajets mais aussi ses achats sur internet et en magasin ainsi que sa consommation ménagère.
+Cette application sera d’abord utilisée à l’échelle de Télécom Paris et potentiellement étendue à tout le plateau voir plus. Cela permettra aux utilisateurs de se rendre compte de leur impact carbone dans notre société à l’heure où une transition écologique s’impose.
+Afin d’avoir l’estimation la plus précise possible de son empreinte carbone, notre application prévoit des questions personnalisées à son utilisateur. 
+L’utilisateur aura à sa disposition sa consommation carbone, la répartition de celle-ci selon le domaine (consommation ménagère, transports, achats, alimentation) mais aussi l’évolution en fonction des jours. Des conseils et astuces personnalisés seront aussi disponibles sur l’application pour diminuer ses émissions de carbone.
+Enfin, chaque utilisateur possédera un compte qui permettra de se comparer avec ses amis possédant l’application et de synchroniser ses données sur plusieurs appareils.
+
+== English Summary (PAN1)
+
+CAREBON is a mobile application that measures the carbon impact of its user. It tracks the user's journeys, purchases on the internet and in shops, and household consumption.
+This application will initially be used at the Télécom Paris level and could potentially be extended to the whole plateau or even more. This will enable users to become aware of their carbon impact in our society at a time when an ecological transition is needed.
+In order to have the most accurate estimate of its carbon footprint possible, our application provides users with personalized questions. 
+The user will have at his disposal his carbon consumption, the breakdown of it according to the field (household consumption, transport, purchases, food) but also the evolution according to the days. Tips and tricks will also be available on the application to reduce carbon emissions.
+Finally, each user will have an account and will be able to compare themselves with their friends who have the application.
+
+<<<
+
+
+<<<
+toc::[]
+<<<
+
+// On numérote le reste des sections
+:sectnums:
+
+== Étude d’antériorité et justification de la proposition (PAN1)
+
+include::proposition/proposition.adoc[Description de la proposition]
+
+include::proposition/etat-de-l-art.adoc[Description de l’état de l’art]
+
+<<<
+
+== Scénarios d’usage (PAN1)
+
+include::scenario/scenario.adoc[Scénarios d’usage]
+
+<<<
+
+== Architecture du projet (PAN1)
+
+include::architecture/schema.adoc[Schéma d’architecture]
+
+<<<
+
+include::architecture/interfaces.adoc[Description des interfaces]
+
+<<<
+
+include::architecture/sequence.adoc[Diagramme de séquence]
+
+<<<
+
+include::architecture/ihm.adoc[Interface utilisateur graphique]
+
+
+<<<
+
+== Organisation du projet (PAN1)
+
+include::organisation/planification.adoc[Diagramme de planification temporel des tâches]
+
+
+<<<

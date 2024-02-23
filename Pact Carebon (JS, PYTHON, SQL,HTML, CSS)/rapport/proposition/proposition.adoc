@@ -1,0 +1,22 @@
+=== Description de la proposition
+
+Comme dit lors du résumé, notre projet consisterait à développer une application mobile pour déterminer l’empreinte carbone de son utilisateur.
+Bien que les activités de celui-ci ayant une empreinte environnementale sont facilement identifiables (transports, nourriture, achats sur internet, consommation du foyer), l’évaluation de ses données de manière précise est complexe.
+En effet, imaginons que notre application suive les coordonnées GPS de son utilisateur, comment savoir les rejets carbones de son moyen de locomotion ? Tous les moyen de transport n’ont pas la même empreinte et le nombre de personnes bénéficiant du même véhicule est à prendre en compte. Cette question soulève donc deux problèmes: le premier comment tenir compte du type et du modèle du véhicule mais aussi du nombre de personnes qui en bénéficient. Pour répondre à ces questions, nous questionnerons l’utilisateur à hauteur d’une ou deux questions ponctuelles. Cela permettrait d’affiner nos calculs. On pourrait ainsi lui demander par exemple son moyen de locomotion habituel, puis le modèle de sa voiture ou le nombre de personnes qui sont avec lui à bord.
+De plus, nous proposons que notre application puisse déduire de la vitesse de déplacement de l’utilisateur son moyen de locomotion. Cela éviterait de poser des questions inutiles, par exemple si la vitesse estimée est de 4 kilomètres par heure, nous éviterons de lui demander quel transport il utilise en déduisant qu’il est à pied.
+
+Un autre problème identifiable est: comment déterminer à partir d’un simple ticket de caisse, l’empreinte carbone des courses de notre utilisateur ? 
+Pour cela, nous utiliserons la base de données OpenFoodFacts, qui permet deux approches: la première consiste à prendre en photo l’article ou son QR code et la base de données va déterminer un eco score correspondant à l’article, cette procédure n’est pas instantanée; la seconde consiste à renseigner la catégorie et le label de l’article afin d’avoir un éco score de manière immédiate.
+Nous cherchons donc à faire de la reconnaissance d’images afin de déterminer la catégorie et le label de chaque article figurant sur le ticket de caisse du client. 
+
+Il existe un problème similaire pour les achats sur internet, nous comptons utiliser une extension qui déterminerait à l’aide de la catégorie et du label l’impact carbone de l’achat.
+
+Enfin, toutes les solutions évoquées génèrent un problème central, celui de la sécurité des données de nos utilisateurs.
+L’application doit connaître la position de l’utilisateur en temps réel. Il est donc important d’être
+transparent sur les données partagées, car nous analysons des données sensibles. Les données collectées et leur utilité sont claires : nous souhaitons synchroniser les données entre l’extension web et l’application, mais aussi permettre de comparer son bilan carbone aux autres utilisateurs.
+Ainsi, il est seulement nécessaire de synchroniser les émissions carbone, leur origine et leur date avec les serveurs. Dès lors, les données de localisation ne seront pas partagées, et la consommation sera calculée sur l’application. Seule la longueur du trajet sera éventuellement
+partagée, le reste ne sera pas stocké, même en local. 
+La collecte de données sera en accord avec les recommandations du CNIL. Nous permettrons ainsi aux utilisateurs de désactiver le partage de données, ou encore de désactiver la localisation. Une section dédiée dans l’application permettra de rappeler clairement les données de l’utilisateur partagées et dans quel but nous les collectons.
+Enfin, nous permettrons à l’utilisateur de pouvoir supprimer toutes les données lui concernant, sur son téléphone ou sur les serveurs.
+
+
