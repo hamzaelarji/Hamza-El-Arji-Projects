@@ -1,0 +1,43 @@
+{
+    "url": "https://stockx.com/api/p/e",
+    "raw_url": "https://stockx.com/api/p/e",
+    "method": "post",
+    "cookies": {
+    },
+    "headers": {
+        "authority": "stockx.com",
+        "accept": "application/json",
+        "accept-language": "en-US",
+        "apollographql-client-name": "Iron",
+        "apollographql-client-version": "2023.12.10.00",
+        "app-platform": "Iron",
+        "app-version": "2023.12.10.00",
+        "content-type": "application/json",
+        "dnt": "1",
+        "origin": "https://stockx.com",
+        "sec-ch-ua": "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"Google Chrome\";v=\"120\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "selected-country": "FR",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "x-operation-name": "FetchSalesGraph",
+        "x-stockx-device-id": "8cdb3ce8-f4c1-4674-94c7-02e84c675eed",
+        "x-stockx-session-id": "4ee67735-1058-41f4-bf30-2bfa6b84d451"
+    },
+    "data": {
+        "query": "query FetchSalesGraph($productId: String!, $currencyCode: CurrencyCode, $intervals: Int, $startDate: String, $endDate: String, $isVariant: Boolean! = false) {\n  variant(id: $productId) @include(if: $isVariant) {\n    id\n    salesChart(\n      currencyCode: $currencyCode\n      intervals: $intervals\n      startDate: $startDate\n      endDate: $endDate\n    ) {\n      ...SalesGraph\n    }\n  }\n  product(id: $productId) @skip(if: $isVariant) {\n    id\n    title\n    productCategory\n    salesChart(\n      currencyCode: $currencyCode\n      intervals: $intervals\n      startDate: $startDate\n      endDate: $endDate\n    ) {\n      ...SalesGraph\n    }\n  }\n}\n\nfragment SalesGraph on SalesChart {\n  series {\n    xValue\n    yValue\n  }\n}",
+        "variables": {
+            "productId": "adidas-yeezy-slide-slate-grey",
+            "startDate": "2022-12-14",
+            "endDate": "2023-12-14",
+            "intervals": 100,
+            "currencyCode": "GBP",
+            "isVariant": true
+        },
+        "operationName": "FetchSalesGraph"
+    },
+    "compressed": false
+}
