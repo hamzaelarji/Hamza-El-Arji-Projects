@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Bar Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #buttonBar {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px;
+        }
+
+        #addForm {
+            display: none;
+        }
+
+        #removeForm {
+            display: none;
+        }
+
+        #MAINSHOW {
+            border: 1px solid #000;
+            padding: 10px;
+            margin: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript" src="test2.js"></script>
+
+<div id="buttonBar">
+    <button id="_SHOW">Show Txt</button>
+    <button id="AD">Add Element</button>
+    <button id="REMOVE">Remove Element</button>
+    <button id="CLEAR">Clear</button>
+    <button id="RESTORE">Restore</button>
+    <button id="PIEB">Show Pie</button>
+    <button id="LOC_PIE_BUTTON">Show Pie local</button>
+</div>
+<div id="MAINSHOW"></div>
+<div id="addForm">
+    <label for="addTitle">Titre:</label>
+    <input type="text" id="titleTF" name="addTitle" required>
+    <br>
+    <label for="addColor">Couleur:</label>
+    <input type="text" id="colorTF" name="addColor" required>
+    <br>
+    <label for="addValue">Valeur:</label>
+    <input type="number" id="valueTF" name="addValue" step="0.01" required>
+    <br>
+    <button id="SENDADD">Valider</button>
+</div>
+
+<div id="removeForm">
+    <label for="indexTF">Index to Remove:</label>
+    <input type="number" id="indexTF" name="indexToRemove" required>
+    <button id="SUBMITREM">Valider</button>
+</div>
+
+<svg id="pieChart" width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+</svg>
+
+<script>
+
+    document.getElementById('_SHOW').addEventListener('click', function() {
+        getData()
+        .then(data => {
+        console.log('Data from server:', data);
+        const mainShowElement = document.getElementById('MAINSHOW');
+
+        mainShowElement.textContent = '';
+  
+        mainShowElement.textContent = JSON.stringify(data, null, 2);
+      })
+        });
+
+    document.getElementById('SENDADD').addEventListener('click', function() {
+        addData();
+        document.getElementById('addForm').style.display = 'none';
+        document.getElementById('removeForm').style.display = 'none';
+    });
+
+    document.getElementById('AD').addEventListener('click', function() {
+        document.getElementById('addForm').style.display = 'block';
+    });
+
+    document.getElementById('SUBMITREM').addEventListener('click', function() {
+    const indexToRemove = document.getElementById('indexTF').value;
+    removeElement(indexToRemove);
+    document.getElementById('addForm').style.display = 'none';
+    document.getElementById('removeForm').style.display = 'none';
+
+    });
+
+    document.getElementById('REMOVE').addEventListener('click', function() {
+    document.getElementById('removeForm').style.display = 'block';
+
+    });
+
+    document.getElementById('CLEAR').addEventListener('click', clearData);
+
+    document.getElementById('RESTORE').addEventListener('click', restoreData);
+
+    document.getElementById('PIEB').addEventListener('click', generatePieChart);
+
+    document.getElementById('LOC_PIE_BUTTON').addEventListener('click', function() {
+        getData()
+        .then(data => {
+            console.log(data);
+            constuctPieChart(data)
+        });
+    });
+</script>
+
+</body>
+</html>
