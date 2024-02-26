@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Carebon Website</title>
+    <link rel="shortcut icon" href="./images/illustrations/shortcutpic.png">
+
+    <link rel="stylesheet" href="./css/style.css?t=0">
+    <link rel="stylesheet" href="./css/login.css?t=12345">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+</head>
+<body>
+
+                       <!-- NAVBAR -->
+
+    <nav>
+        <div class="container nav__container">
+            <a href="index.html"><h4>Carebon</h4></a>
+            <ul class="nav__menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="actions.html">Actions</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Account</a></li>
+            </ul>
+            <button id="open-menu-btn"><i class="uil uil-ellipsis-h"></i></button>
+            <button id="close-menu-btn"><i class="uil uil-multiply"></i></button>
+        </div>
+    </nav>
+
+    <div class="containerF" id="containerF">
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h1>Create An Account</h1>
+                <div class="social-container">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>Use your Google Account</span>
+                <input type="text" placeholder="Username" id="ca_name">
+                <input type="email" placeholder="Mail" id="ca_mail">
+                <input type="password" placeholder="Password" id="ca_password">
+                <button type="reset" onclick="signUp()" >Create the Account</button>
+                
+            </form>
+        </div>
+        <div class="form-container login-container">
+            <form action="#">
+                <h1>Sign In</h1>
+                <div class="social-container">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <input type="text" placeholder="Username" id="sg_mail">
+                <input type="password" placeholder="Password" id="sg_password">
+                <button type="reset" onclick="signIn()" >Sign in</button>
+                
+            </form>
+        </div>
+
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>You already have an account ?</h1>
+                    <p>Click on the button below to sign in.</p>
+                    <button class="ghost" id="login">Sign in</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>You don't have an account yet ?</h1>
+                    <p>No problem. You can create one by clicking on the button just below.</p>
+                    <button class="ghost" id="signUp">Create an account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup" id="popup_ca">
+        <img src="./images/illustrations/fail.png" alt="fail cross">
+        <h2>Registration Failed!</h2>
+        <p>The email address and/or username provided may be registred already...</p>
+        <button type="button" onclick="closePopupCa()">OK</button>
+    </div>
+    <div class="popup" id="popup_si">
+        <img src="./images/illustrations/fail.png" alt="fail cross">
+        <h2>Login Failed!</h2>
+        <p>The username and/or the password provided may be incorrect...</p>
+        <button type="button" onclick="closePopupSi()">OK</button>
+    </div>
+    <script src="./scriptLogin.js?t=12345" charset="utf-8"></script>
+</body>
+</html>
