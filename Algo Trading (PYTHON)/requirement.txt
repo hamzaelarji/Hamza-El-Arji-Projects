@@ -1,0 +1,11 @@
+numpy
+pandas
+matplotlib
+scipy
+pandas_datareader
+plotly
+nbformat
+yfinance
+ta
+statsmodels
+seaborn
