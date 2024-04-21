@@ -1,64 +1,28 @@
 #ifndef GROUP_H
 #define GROUP_H
 
+#include "Media.h"
+
 #include <list>
 #include <string>
 #include <memory>
-#include "multimedia.h"
-#include "video.h"
+
 using namespace std;
+using MediaPtr = shared_ptr<Media>;
 
-/**
- * @brief The Group class
- */
+class Group : public list<MediaPtr> {
+    friend class Master;
 
-class Group : public list<shared_ptr<Multimedia>>
-{
-    string name;
-
-public:
+    private :
+    string name {};
+    Group(string name) : list<MediaPtr>(), name{name} {}
     Group() {}
-    /**
-     * @brief Group
-     * @param name
-     */
-    Group(string name) : name(name) {}
-    ~Group() {
-        cout << "Group " << name << " is dead ! " << endl;
-        for(auto it = this->begin(); it != this->end(); it++) {
-//            debug(it->use_count());
-            it->reset();
-        }
-    }
-    /**
-     * @brief getName returns the name of the group
-     * @return
-     */
-    string getName() const {
-        return name;
-    }
 
-    /**
-     * @brief printGroup call printVariables on the list of Multimedia elements in the same group
-     */
-
-    void printGroup(ostream &out) {
-        out << "--------------------------------------||";
-        out << "Printing group :" << name << "||";
-        out << "--------------------------------------||";
-
-        for(auto it = this->begin(); it != this->end(); it++) {
-            (*it)->printVariables(out);
-        }
-    }
-
-    /**
-     * @brief setName sets the name of the group
-     * @param name
-     */
-    void setName(string name) {
-        this->name = name;
+    public :
+    string get_name() const {return name;}
+    void print_values(ostream& stream) const {
+        for(auto & it : *this) it->print_values(stream);
     }
 };
 
-#endif // GROUP_H
+#endif

@@ -1,136 +1,145 @@
 //
 // main.cpp
-// Created on 21/10/2018
+// Created on 05/03/2024
 //
+#include "Media.h"
+#include "Video.h"
+#include "Photo.h"
+#include "Film.h"
+#include "Group.h"
+#include "Master.h"
 
 #include <iostream>
-#include <stdio.h>
-#include <unistd.h>
+#include <string>
 #include <memory>
-#include <sstream>
 
-#include "multimedia.h"
-#include "photo.h"
-#include "video.h"
-#include "film.h"
-#include "group.h"
-#include "manager.h"
+#include <sstream>
 #include "tcpserver.h"
 
-// Macro to make it easier for print debugging " - variable_name : value"
-#define debug(x) cerr << "       - " <<#x << " : " << x << endl;
-#define debugs(x, y) cerr << "       - " <<#x << " : " << x << "    - " <<#y << " : " << y << endl;
-
 using namespace std;
-using namespace cppu;
+using PhotoPtr = shared_ptr<Photo>;
+using VideoPtr = shared_ptr<Video>;
+
+#define VERSION_2
 
 
-//#define OLD_VERSION
-
-const int PORT = 3331;
+#ifdef VERSION_1
 
 int main(int argc, const char* argv[])
 {
-    // crée le TCPServer
-    shared_ptr<TCPServer> server(new TCPServer());
-
-    // crée l'objet qui gère les données
-    shared_ptr<Manager> manager(new Manager());
-
-    // création des objets dans le manager
-    shared_ptr<Video> video = manager->createVideo("video", "media/video.mp4", 100);
-    shared_ptr<Photo> photo = manager->createPhoto("photo", "media/tpt.jpg", 123, 321);
-    shared_ptr<Group> group = manager->createGroup("group");
-    group->push_back(video);
-    group->push_back(photo);
-
-    server->setCallback(*manager, &Manager::processRequest);
-
-    cout << "Starting Server on port " << PORT << endl;
-    int status = server->run(PORT);
-
-    if (status < 0) {
-      cerr << "Could not start Server on port " << PORT << endl;
-      return 1;
+    cout 
+    << "Hello brave new world"
+    << endl;
+    string path = "~/Documents/telecom/INF224/cpp/data";
+    /*
+    Media ** tab = new Media*[10];
+    tab[0] = new Photo("logo-long.png", path, 3, 4);
+    tab[1] = new Video("defi-confession-nocturne.mpeg", path, 5);
+    tab[2] = new Photo("paul-frambot.png", path, 3, 4);
+    tab[3] = new Video("conf-paul-frambot.mp4", path, 5);
+    for(int i = 0; i < 4; i++) {
+        tab[i]->play_media();
     }
+    delete[] tab;*/
 
+    /*
+    int chaptersT[4] = {40,30,20,30};
+    Film  *tarantino = new Film("Pulp Fiction", "C/", 120, 4, chaptersT);
+    tarantino->print_values(cout);
+    delete tarantino;*/
 
-#ifdef OLD_VERSION
-//    Multimedia *multimedia = new Multimedia(string("nameXY"), string("fileNameXYZ"));
-//    multimedia->printVariables(cout);
+    /* PhotoPtr logo( new Photo("logo-long.png", path, 3, 4));
+    PhotoPtr frambot( new Photo("paul-frambot.png", path, 3, 4));
+    VideoPtr confFrambot( new Video("conf-paul-frambot.mp4", path, 5));
+    Group *tbf = new Group("tbf");
+    tbf->push_back(logo);
+    tbf->push_back(frambot);
+    tbf->push_back(confFrambot);
+    tbf->print_values(cout);
 
-//    Photo *photo = new Photo("tpt", "tpt.jpg", 213, 100);
-//    photo->printVariables(cout);
-//    photo->play();
+    tbf->pop_front();
+    tbf->pop_front();
+    tbf->pop_front();*/
 
-//    int cnt = 2;
-//    Multimedia *multimedia[cnt];
-//    multimedia[0] = new Photo("tpt", "tpt.jpg", 213, 100);
-//    multimedia[1] = new Video("video", "video.mp4", 100);
+    Master  *bdd = new Master();
+    FilmPtr jb = bdd->createFilm("James Bond");
+    PhotoPtr mariage = bdd->createPhoto("Marriage");
 
-//    for(int i = 0; i < cnt; i++) {
-//        multimedia[i]->play();
-//    }
+    bdd->printObject("Marriage");
+    bdd->printObject("Test");
 
-//    int numberChapters = 10;
-//    Film *film = new Film("video", "video.mp4", 100, numberChapters);
-//    int duration[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    return 0;
 
-//    film->setDurationChapters(duration, numberChapters);
-
-//    duration[0] = 0; duration[1] = 0; // on modifie duration
-
-//    film->printVariables(cout);
-//    delete film;
-
-
-//    Pour tester la construction par copie, décommentez ça
-//    int numberChapters = 10;
-//    Film *film = new Film("video", "video.mp4", 100, numberChapters);
-//    int duration[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-//    film->setDurationChapters(duration, numberChapters);
-//    Film film2 = (*film);
-
-//    duration[0] = 0, duration[1] = 0;
-//    film->setDurationChapters(duration, numberChapters);
-
-//    film->printVariables(cout);
-//    cout << endl;
-//    film2.printVariables(cout);
-
-//    shared_ptr<Video> video(new Video("video", "media/video.mp4", 100));
-//    shared_ptr<Photo> photo(new Photo("tpt", "media/tpt.jpg", 213, 100));
-//    Group* group(new Group(string("Vacances")));
-
-//    cout << group->getName() << endl;
-//    group->push_back(video);
-//    group->push_back(photo);
-//    group->printGroup(cout);
-//    delete group;
-//    photo->printVariables(cout); // Photo n'est pas détruit quand le groupe est détruit
-
-//    debug(photo.use_count());
-//    group->push_back(photo);
-//    group->push_back(video);
-//    group->printGroup(cout);
-//    video.reset();
-//    delete group;
-//    debug(photo.use_count()); // on remarque bien que c'est 1, vu qu'on n'a pas fait de photo.reset()
-
-//    photo->printVariables(cout);
-
-//    Manager m;
-//    shared_ptr<Multimedia> video = (m.createVideo("video", "video.mp4", 100));
-//    shared_ptr<Multimedia> photo = (m.createPhoto("photo", "tpt.jpg", 123, 321));
-//    m.createVideo("video", "video.mp4", 100);
-//    m.createPhoto("photo", "tpt.jpg", 123, 321);
-//    m.play("vdideo");
+}
 
 #endif
 
+#ifdef VERSION_2
 
 
+const string path = "~/Documents/telecom/INF224/cpp/data";
+const int PORT = 3331;
 
 
-    return 0;
+int main(int argc, char* argv[])
+{
+  Master *box = new Master();
+
+  VideoPtr jb = box->createVideo("Frambot", "conf-paul-frambot.mp4", path, 5);
+  PhotoPtr mariage = box->createPhoto("Alumneye", "logo-long.png", path, 3, 4);
+
+  // cree le TCPServer
+  auto* server =
+  new TCPServer( [&](string const& request, string& response) {
+
+    // the request sent by the client to the server
+    cout << "request: " << request << endl;
+
+    stringstream buffer, buffer_out;
+    string command, name;
+    buffer << request << endl;
+    buffer >> command >> name;
+
+    
+    //cout << "test :" << command << "," << name << endl;
+
+    if(command == "searchO") {
+      box->printObject(name, buffer_out);
+      response = buffer_out.str();
+    }
+
+    if(command == "searchG") {
+      box->printGroup(name, buffer_out);
+      response = buffer_out.str();
+    }
+
+    if(command == "play") {
+      box->play(name);
+      response = buffer_out.str();
+    }
+  
+    // the response that the server sends back to the client
+    // response = "RECEIVED: " + request;
+
+    // return false would close the connecytion with the client
+    return true;
+  });
+
+
+  // lance la boucle infinie du serveur
+  std::cout << "Starting Server on port " << PORT << std::endl;
+
+  int status = server->run(PORT);
+
+  // en cas d'erreur
+  if (status < 0) {
+    std::cerr << "Could not start Server on port " << PORT << std::endl;
+    return 1;
+  }
+
+  return 0;
 }
+
+
+
+#endif

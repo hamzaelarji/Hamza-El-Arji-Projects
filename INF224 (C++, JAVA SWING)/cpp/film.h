@@ -1,127 +1,38 @@
 #ifndef FILM_H
 #define FILM_H
-#include "video.h"
 
-/**
- * @brief The Film class
- */
-class Film : public Video
-{
-    int numberChapters;
-    int *durationChapters;
-public:
-    /**
-     * @brief Film Film constructor
-     * @param name
-     * @param fileName
-     * @param duration
-     * @param numberChapters
-     */
-    Film(string name, string fileName, int duration, int numberChapters)
-        : Video(name, fileName, duration)
-    {
-        durationChapters = nullptr;
-    }
-    /**
-     * @brief Film copy constructor
-     * @param other
-     */
-    Film(const Film &other)
-        : Video(other) {
-        numberChapters = other.numberChapters;
-        if(other.durationChapters != nullptr)
-            this->setDurationChapters(other.durationChapters, other.numberChapters);
-    }
+#include "Video.h"
 
-    /**
-     * @brief operator = redefining the operator= to handle deep copies
-     * @param other
-     * @return
-     */
-    // comment this if you want to allow "shallow" copy
-    Film& operator=(const Film &other) {
-        Video::operator=(other);
-        numberChapters = other.numberChapters;
-        delete durationChapters;
-        if(other.durationChapters)
-            this->setDurationChapters(other.durationChapters, other.numberChapters);
-        else
-            durationChapters = nullptr;
-        return *this;
-    }
+class Film : public Video {
+    
+    friend class Master;
+    
+    private:
 
-    ~Film() {
-        delete[] durationChapters;
-    }
-    /**
-     * @brief printVariables
-     * @param flux
-     */
-    void printVariables(ostream & flux) const override {
-        // Afin d'éviter les \n dans les sockets, on les remplace par "||". Il faudra les parser par la suite côté client
+    int number_chapter {};
+    int * chapters {};
+    Film(string name, string pathname, int duration, int number_chapter, int * _chapters);
+    Film() {}
 
-        Video::printVariables(flux);
-        flux << "Number of chapters : " << numberChapters << "||";
-        for(int i = 0; i < numberChapters; i++) {
-            flux << "Duration chapter #" << i + 1 << ": " << durationChapters[i] << "||";
+    public:
+    
+    ~Film() {delete[] chapters;}
+    int get_number_chapter() const {return number_chapter;}
+    int const * get_chapters() const {return chapters;}
+    void set_chapters(int const * chapters, int number_chapter);
+
+    void print_values(ostream& stream) const {
+        Video::print_values(stream);
+        stream
+        << " number of chapters : " << number_chapter
+        << " duration of chapters : ";
+        for(int i = 0; i < number_chapter; i++) {
+            stream
+            << " chapter " << i << " : " << chapters[i];
         }
     }
-    /**
-     * @brief setDurationChapters sets
-     * @param durationChapters
-     * @param numberChapters
-     */
-    void setDurationChapters(const int *durationChapters, int numberChapters) {
-        this->numberChapters = numberChapters;
-
-        delete[] this->durationChapters;
-        this->durationChapters = nullptr;
-
-        if(numberChapters > 0)
-            this->durationChapters = new int[numberChapters];
-
-        for(int i = 0; i < numberChapters; i++) {
-            this->durationChapters[i] = durationChapters[i];
-        }
-
-    }
-    /**
-     * @brief getNumberChapters
-     * @return
-     */
-    int getNumberChapters() const {
-        return numberChapters;
-    }
-
-    /**
-     * @brief getDurationChapters
-     * @return
-     */
-
-    const int* getDurationChapters() const{
-        return durationChapters;
-    }
-    /**
-     * @brief getChapter
-     * @param index
-     * @return
-     */
-    int getChapter(int index) {
-        if(index >= numberChapters)
-            return -1; // out of bound
-        else
-            return durationChapters[index];
-
-    }
-    /**
-     * @brief getType
-     * @return
-     */
-    string getType() const override {
-        return string("Film");
-    }
-
 
 };
 
-#endif // FILM_H
+
+#endif

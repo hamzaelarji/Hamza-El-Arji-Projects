@@ -9,12 +9,12 @@
 #
 # Nom du programme
 #
-PROG = MyMultimedia
+PROG = myprog
 
 #
 # Fichiers sources (NE PAS METTRE les .h ni les .o seulement les .cpp)
 #
-SOURCES = tcpserver.cpp cppsocket.cpp manager.cpp multimedia.cpp main.cpp
+SOURCES = main.cpp Media.cpp Film.cpp Master.cpp tcpserver.cpp ccsocket.cpp
 
 #
 # Fichiers objets (ne pas modifier sauf si l'extension n'est pas .cpp)
@@ -43,7 +43,7 @@ LDFLAGS =
 # Librairies a utiliser
 # Exemple: LDLIBS = -L/usr/local/qt/lib -lqt
 #
-LDLIBS = -lpthread
+LDLIBS = -lpthread 
 
 
 ##########################################
@@ -98,3 +98,4 @@ depend-${PROG}:
 # Inclusion du fichier des dependances
 #
 -include depend-${PROG}
+

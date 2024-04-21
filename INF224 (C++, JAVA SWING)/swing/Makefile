@@ -9,12 +9,12 @@
 #
 # Nom du programme (doit correspondre au fichier qui contient main())
 #
-PROG = Main
+PROG = Telecommande
 
 #
 # Fichiers sources .java
 #
-SOURCES = Main.java RemoteControl.java Client.java 
+SOURCES = Client.java Telecommande.java
 
 #
 # Compilateur Java
@@ -37,7 +37,8 @@ all: classes
 run: all
 	java ${PROG}
 
-classes: $(SOURCES:.java=.class)
+classes:
+	${JC} ${JFLAGS} ${SOURCES}
 
 clean:
 	-@$(RM) *.class 1>/dev/null 2>&1
@@ -55,5 +56,6 @@ tar:
 
 .java.class:
 	$(JC) $(JFLAGS) $*.java
+
 
 

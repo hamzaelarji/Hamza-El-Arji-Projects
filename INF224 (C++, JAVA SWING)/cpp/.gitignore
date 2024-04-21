@@ -1,0 +1,8 @@
+# Object files
+*.o 
+
+# Dependencies
+depend-myprog
+
+# Executable
+myprog

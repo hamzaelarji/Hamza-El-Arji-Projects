@@ -1,79 +1,27 @@
 #ifndef PHOTO_H
 #define PHOTO_H
 
-#include "multimedia.h"
+#include "Media.h"
 
-using namespace std;
-/**
- * @brief The Photo class
- */
-class Photo : public Multimedia {
-    double latitude;
-    double longitude;
-public:
-    Photo(string name, string fileName, double latitude, double longitude) :
-        Multimedia(name, fileName), latitude(latitude), longitude(longitude) {
-    }
+class Photo : public Media {
+    
+    friend class Master;
+    
+    private:
+    int width {};
+    int height {};
+    Photo(string name, string pathname, int width, int height) : Media(name, pathname), width{width}, height{height} {}
+    Photo() {}
 
-    /**
-     * @brief printVariables affiche les variables d'une photo
-     * @param flux
-     */
-    void printVariables(ostream & flux) const override {
-        Multimedia::printVariables(flux);
-        flux << "latitude : " << latitude << "||";
-        flux << "longitude : " << longitude <<"||";
-    }
-
-    /**
-     * @brief play plays the photo
-     */
-    void play() const override {
-        string command = "imagej " + fileName + " &";
-        cout << "IMAGE" << endl;
-        system(command.c_str());
-    }
-
-    /**
-     * @brief getType gets the type of the Multimedia
-     * @return
-     */
-    string getType() const override {
-        return string("Photo");
-    }
-
-    /**
-     * @brief setLattitude
-     * @param lattitude
-     */
-    void setLattitude(double lattitude) {
-        this->latitude = latitude;
-    }
-
-    /**
-     * @brief setLongitude
-     * @param longitude
-     */
-    void setLongitude(double longitude) {
-        this->longitude = longitude;
-    }
-
-    /**
-     * @brief getLatitude
-     * @return
-     */
-    int getLatitude() const {
-        return latitude;
-    }
-
-    /**
-     * @brief getLongitude
-     * @return
-     */
-    int getLongitude() const {
-        return longitude;
-    }
-
+    public:
+    virtual ~Photo() {cout << "I die Photo" << endl;}
+    int get_width() const {return width;}
+    int get_height() const {return height;}
+    void set_width(int w) {width = w;}
+    void set_height(int h) {height = h;}
+    void print_values(ostream& stream) const { Media::print_values(stream); stream << " width : " << width << " height : " << height;}    
+    void play_media() const { system(("imagej " + pathname + "/" + name + " &").c_str()); }
 };
 
-#endif // PHOTO_H
+
+#endif
